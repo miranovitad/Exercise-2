@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Calculator</title>
+    <style type="text/css">
+    	body{
+    		padding-top: 60px;
+    		background-color: #f6e58d;
+    	}
+    	.row{
+    		margin: 0px;
+    	}
+    	.col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto{
+    		padding: 0;
+    	}
+    	.btn{
+    		font-weight: bold;
+    		border-radius: 0;
+    		padding: 18px;
+    		font-size: 20px;
+    	}
+    	.operasi{
+    		letter-spacing: 5px !important;
+    		height: 60px;
+    		text-align: right;
+    		font-size: 35px;
+    		font-weight: bold;
+    	}
+    	.result{
+    		height: 40px !important;
+    		text-align: right;
+    		font-size: 20px;
+    		font-weight: bold;
+    		color: #95a5a6;
+    	}
+    	.dark-blue{
+    		background-color: #0069d9;
+    		border-color: #0069d9;
+    	}
+    	.form-control{
+    		border-radius: 0;
+    		border:none;
+    	}
+    	.btn-primary:hover{
+    		background-color: #0062cc;
+    	}
+    	h1{
+    		font-weight: 110;
+    		text-align: center;
+    		color: #34495e;
+    	}
+    	b{
+    		font-weight: 1000;
+    	}
+    </style>
+  </head>
+  <body>
+  	<form>
+  	<div class="container">
+  		<div class="row justify-content-center">
+  			<h1>Mira's <b>Calculator</b></h1>
+  		</div>
+  		<div class="row justify-content-center">
+  			<div class="col-md-4">
+  				<input type="text" class="form-control operasi" id="data" name="data">
+  			</div>
+  		</div>
+  		<div class="row justify-content-center">
+  			<div class="col-md-4">
+  				<input type="text" class="form-control result" id="hasil">
+  			</div>
+  		</div>
+  		<div class="row justify-content-center">
+  			<div class="col-md-2">
+  				<button type="button" class="btn btn-primary btn-block dark-blue" onClick="document.getElementById('data').value = '';document.getElementById('hasil').value = ''; ">Clear all</button>
+  			</div>
+  			<div class="col-md-1">
+  				<button type="button" class="btn btn-primary btn-block dark-blue" onClick="deleteChar(this.form.data); view_hitung();">C</button>
+  			</div>
+  			<div class="col-md-1">
+  				<button type="button" class="btn btn-primary btn-block dark-blue" onclick="document.getElementById('data').value += '/'; view_hitung();">/</button>
+  			</div>
+  		</div>
+  		<div class="row justify-content-center">
+  			<div class="col-md-1">
+  				<button type="button" class="btn btn-primary btn-block" onclick="document.getElementById('data').value += '7'; view_hitung();">7</button>
+  			</div>
+  			<div class="col-md-1">
+  				<button type="button" class="btn btn-primary btn-block" onclick="document.getElementById('data').value += '8'; view_hitung();">8</button>
+  			</div>
+  			<div class="col-md-1">
+  				<button type="button" class="btn btn-primary btn-block" onclick="document.getElementById('data').value += '9'; view_hitung();">9</button>
+  			</div>
+  			<div class="col-md-1">
+  				<button type="button" class="btn btn-primary btn-block dark-blue" onclick="document.getElementById('data').value += '*'; view_hitung();">*</button>
+  			</div>
+  		</div>
+  		<div class="row justify-content-center">
+  			<div class="col-md-1">
+  				<button type="button" class="btn btn-primary btn-block" onclick="document.getElementById('data').value += '4'; view_hitung();">4</button>
+  			</div>
+  			<div class="col-md-1">
+  				<button type="button" class="btn btn-primary btn-block" onclick="document.getElementById('data').value += '5'; view_hitung();">5</button>
+  			</div>
+  			<div class="col-md-1">
+  				<button type="button" class="btn btn-primary btn-block" onclick="document.getElementById('data').value += '6'; view_hitung();">6</button>
+  			</div>
+  			<div class="col-md-1">
+  				<button type="button" class="btn btn-primary btn-block dark-blue" onclick="document.getElementById('data').value += '-'; view_hitung();">-</button>
+  			</div>
+  		</div>
+  		<div class="row justify-content-center">
+  			<div class="col-md-1">
+  				<button type="button" class="btn btn-primary btn-block" onclick="document.getElementById('data').value += '1'; view_hitung();">1</button>
+  			</div>
+  			<div class="col-md-1">
+  				<button type="button" class="btn btn-primary btn-block" onclick="document.getElementById('data').value += '2'; view_hitung();">2</button>
+  			</div>
+  			<div class="col-md-1">
+  				<button type="button" class="btn btn-primary btn-block" onclick="document.getElementById('data').value += '3'; view_hitung();">3</button>
+  			</div>
+  			<div class="col-md-1">
+  				<button type="button" class="btn btn-primary btn-block dark-blue" onclick="document.getElementById('data').value += '+'; view_hitung();">+</button>
+  			</div>
+  		</div>
+  		<div class="row justify-content-center">
+  			<div class="col-md-1">
+  				<button type="button" class="btn btn-primary btn-block" onclick="document.getElementById('data').value += '.'; view_hitung();">.</button>
+  			</div>
+  			<div class="col-md-1">
+  				<button type="button" class="btn btn-primary btn-block" onclick="document.getElementById('data').value += '0'; view_hitung();">0</button>
+  			</div>
+  			<div class="col-md-1">
+  				<button type="button" class="btn btn-primary btn-block" onclick="document.getElementById('data').value += '%'; view_hitung();">%</button>
+  			</div>
+  			<div class="col-md-1">
+  				<button type="button" class="btn btn-primary btn-block dark-blue" onclick="hitung()">=</button>
+  			</div>
+  		</div>
+  	</form>
+  	</div>
+  <script type="text/javascript">
+  	function hitung(){
+  		var data = document.getElementById("data").value;
+  		var hasil = eval(data);
+  		document.getElementById("data").value = hasil;
+  		document.getElementById("hasil").value = "";
+  	}
+  	function deleteChar(input) {
+		input.value = input.value.substring(0, input.value.length - 1)
+	}
+	function view_hitung(){
+  		var data = document.getElementById("data").value;
+  		if(isNaN(data)){
+  			var hasil = eval(data);
+  			document.getElementById("hasil").value = hasil;
+  		}else{
+  			document.getElementById("hasil").value = "";
+  		}
+  	}
+  </script>
+  </body>
+</html>
